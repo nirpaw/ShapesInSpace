@@ -68,7 +68,7 @@ function getRnadomSize(){
 }
 
 function getRandomShape(){
-  var shapes = ["square", "circle"];
+  var shapes = ["square", "circle", "triangular"];
   var item = shapes[Math.floor(Math.random()*shapes.length)];
   return item;
 
@@ -92,26 +92,30 @@ function createShape() {
       e.target.remove();
     });
 
-    //sub to reotat btn
+    //sub to reotation btn
     document.getElementById("btnRotration").addEventListener('click', function(){
-
       e.target.style.animation = 'spin 5s linear infinite';
     });
 } 
 
-  shape.className = getRandomShape();
-  shape.nodeType = "button";
-  
+  shape.className = getRandomShape(); //set shape 
+  // shape.nodeType = "button";
   
   randColor = getRandomColor();
   shape.style.background = randColor; // set color
   shape.style.borderColor = randColor;
 
   randSize = getRnadomSize();
-  shape.style.width = randSize+'px' //set width 
-  shape.style.height = randSize+'px' // set height
+  shape.style.width = randSize+'px' //set size 
+  shape.style.height = randSize+'px' 
 
   document.getElementById("container").appendChild(shape);
+  var x=Math.random()*1000;
+  x=Math.round(x);
+  var y=Math.random()*500;
+  y=Math.round(y);
+  shape.style.left=x+'px';
+  shape.style.top=y+'px';
 
   //document.getElementById("shape").style.top=22+'px';
 
