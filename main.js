@@ -41,7 +41,6 @@ var myVariable = 5;
 document.getElementById("btnCreatShape").onclick = function() {makeDiv()};
 
 //////////
-var last = null;
 Element.prototype.remove = function() {
   this.parentElement.removeChild(this);
 }
@@ -66,9 +65,14 @@ function getRnadomSize(){
   var x=Math.random()*200;
   x=Math.round(x);
   return x;
-
 }
 
+function getRandomShape(){
+  var shapes = ["square", "circle"];
+  var item = shapes[Math.floor(Math.random()*shapes.length)];
+  return item;
+
+}
 function aa (e){
   var para = document.createElement("P");
   para.innerHTML = "This is a paragrapggggggggggggggggasdasdah  .   "  + e.id;
@@ -78,10 +82,8 @@ function aa (e){
 
 function createShape() {
   var shape = document.createElement("div");
-  shape.className = "square";
-  shape.nodeType = "button";
-  shape.id = "shape" ;
-  // shape.addEventListener("click", aa);
+
+
   shape.onclick = e => {
     e.target.style.borderColor = 'black';
     e
@@ -92,10 +94,15 @@ function createShape() {
 
     //sub to reotat btn
     document.getElementById("btnRotration").addEventListener('click', function(){
-      e.target.className = 'rotationshape';
+
+      e.target.style.animation = 'spin 5s linear infinite';
     });
 } 
 
+  shape.className = getRandomShape();
+  shape.nodeType = "button";
+  
+  
   randColor = getRandomColor();
   shape.style.background = randColor; // set color
   shape.style.borderColor = randColor;
